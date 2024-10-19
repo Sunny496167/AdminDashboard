@@ -5,7 +5,7 @@ const StateContext = createContext();
 const initialState = {
   chat: false,
   cart: false,
-  useProfile: false,
+  userProfile: false,
   notification: false,
 };
 
@@ -16,6 +16,7 @@ export const ContextProvider = ({ children }) => {
   const [themeSettings, setThemeSettings] = useState(false);
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
+  const [cartVisible, setCartVisible] = useState(false); // New cart state
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
@@ -32,6 +33,7 @@ export const ContextProvider = ({ children }) => {
   const handleClick = (clicked) => {
     setIsClicked({ ...initialState, [clicked]: true });
   };
+
   return (
     <StateContext.Provider
       value={{
@@ -48,6 +50,8 @@ export const ContextProvider = ({ children }) => {
         setThemeSettings,
         setMode,
         setColor,
+        cartVisible,
+        setCartVisible,
       }}
     >
       {children}
