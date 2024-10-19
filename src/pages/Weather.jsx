@@ -101,7 +101,7 @@ const Weather = () => {
   const uniqueDays = new Set();
 
   return (
-    <div className="m-2 md:m-10 md:p-10 p-2 bg-white dark:bg-secondary-dark-bg rounded-3xl">
+    <div className="m-14 md:m-10 md:p-10 p-2 bg-white dark:bg-secondary-dark-bg rounded-3xl">
       <Header category="App" title="Weather" />
       <div className="flex justify-end">
         <AutoCompleteComponent
@@ -122,13 +122,13 @@ const Weather = () => {
       <div>
         {weatherData ? (
           <div>
-            <div className="flex flex-col md:flex-row justify-between">
+            <div className="flex md:flex-row sm:text-center gap-2 justify-between">
               <div className="text-white flex flex-col md:flex-row">
                 <h2 className="text-4xl font-semibold text-gray-400">
                   <i className="fas fa-temperature-full"></i>
                   {weatherData.main.temp}°C
                 </h2>
-                <div className="ml-2 text-xl text-gray-600">
+                <div className="ml-2 text-xl text-nowrap text-gray-600">
                   <ul className="list-none">
                     <li>Description: {weatherData.weather[0].description}</li>
                     <p className="text-lg">
@@ -141,7 +141,7 @@ const Weather = () => {
                   </ul>
                 </div>
               </div>
-              <div className="text-gray-500 text-center md:text-left">
+              <div className="text-gray-500 text-nowrap md:text-left">
                 <h2 className="capitalize text-3xl text-semibold text-gray-600">
                   {city}
                 </h2>
