@@ -70,6 +70,9 @@ const App = () => {
               <Route path='/pyramid' element={<Pyramid />} />
               <Route path='/stacked' element={<Stacked />} />
             </Routes>
+            <div className="flex-1 flex justify-center items-center p-4">
+              <Footer />
+            </div>
           </div>
           </div>
         </div>
