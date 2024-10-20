@@ -16,7 +16,6 @@ export const ContextProvider = ({ children }) => {
   const [themeSettings, setThemeSettings] = useState(false);
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
-  const [cartVisible, setCartVisible] = useState(false); // New cart state
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
@@ -34,6 +33,11 @@ export const ContextProvider = ({ children }) => {
     setIsClicked({ ...initialState, [clicked]: true });
   };
 
+  // New function to handle closing the chat
+  const handleClose = (clicked) => {
+    setIsClicked({ ...isClicked, [clicked]: false });
+  };
+
   return (
     <StateContext.Provider
       value={{
@@ -42,6 +46,7 @@ export const ContextProvider = ({ children }) => {
         isClicked,
         setIsClicked,
         handleClick,
+        handleClose, // Pass handleClose to context
         screenSize,
         setScreenSize,
         currentColor,
@@ -49,14 +54,13 @@ export const ContextProvider = ({ children }) => {
         themeSettings,
         setThemeSettings,
         setMode,
-        setColor,
-        cartVisible,
-        setCartVisible,
+        setColor
       }}
     >
       {children}
     </StateContext.Provider>
   );
 };
+
 
 export const useStateContext = () => useContext(StateContext);
